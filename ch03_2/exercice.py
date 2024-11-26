@@ -39,6 +39,9 @@ def cash(value):
 		result[name] = int(value // deno)
 		value %= deno
 
+	if value < 0.05:
+		result['nickels'] += 1
+
 	twenties = result['twenties']
 	tens = result['tens']
 	fives = result['fives']
@@ -69,6 +72,6 @@ def format_base(value, base, digit_letters):
 if __name__ == "__main__":
 	print(dissipated_power(69, 420))
 	print(orthogonal((1, 1), (-1, 1)))
-		print(point_in_circle([-1, 1], [1, -1], 2))
+	print(point_in_circle([-1, 1], [1, -1], 2))
 	print(cash(137.38))
 	print(format_base(-420, 16, "0123456789ABCDEF"))
