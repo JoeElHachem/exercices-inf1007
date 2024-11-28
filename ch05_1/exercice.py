@@ -3,31 +3,77 @@
 
 from typing import List
 
+from fontTools.misc.cython import returns
+from scipy.stats import nbinom
+
 
 def convert_to_absolute(number: float) -> float:
-    return 0
+    if number < 0:
+        number *= -1
+
+
+    return number
 
 
 def use_prefixes() -> List[str]:
     prefixes, suffixe = 'JKLMNOPQ', 'ack'
+    noms =[]
+    for i in range(len(prefixes)):
+        noms.append(prefixes[i] + suffixe)
 
-    return [""]
+    return noms
 
 
 def prime_integer_summation() -> int:
-    return 0
+    prime = [2, 3, 5]
+    number = 6
+    while len(prime) < 100:
+        is_prime = True
+        for i in range(2, number // 2):
+            if number % i == 0:
+                is_prime = False
+                break
+
+        if is_prime:
+            prime.append(number)
+
+        number += 1
+
+    return sum(prime)
 
 
 def factorial(number: int) -> int:
-    return 0
+    nb = 1
+    while number != 0 :
+        nb *= number
+        number -= 1
+
+    return nb
 
 
 def use_continue() -> None:
-    pass
+    for i in range(1, 11):
+        if i == 5:
+            continue
+
+        print(i)
 
 
 def verify_ages(groups: List[List[int]]) -> List[bool]:
-    return []
+    acceptance = []
+
+    for group in groups:
+        if len(group) > 10 or len(group) <= 3:
+            acceptance.append(False)
+            continue
+        if 25 in group:
+            acceptance.append(True)
+            continue
+        if (min(group) < 18) or (50 in group and max(group) > 70):
+            acceptance.append(False)
+            continue
+
+        acceptance.append(True)
 
 
 def main() -> None:
