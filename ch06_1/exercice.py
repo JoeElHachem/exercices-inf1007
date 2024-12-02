@@ -1,47 +1,105 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+from pydoc_data.topics import topics
+
+from anyio.abc import value
 
 
 def order(values: list = None) -> list:
-    if values is None:
+    list_values = []
+    while len(list_values) != 10:
         # TODO: demander les valeurs ici
-        pass
+        value = input('Entrez une valeur: ')
+        list_values.append(value)
 
-    return []
+    print(sorted(list_values))
+    return sorted(list_values)
 
 
 def anagrams(words: list = None) -> bool:
+    list_mots = []
+
     if words is None:
         # TODO: demander les mots ici
-        pass
+        pm = input('Entrez un mot: ')
+        list_mots.append(pm)
+        dm = input('Entrez un deuxième mot: ')
+        list_mots.append(dm)
 
-    return False
+    val = False
+    if sorted(list_mots[0]) == sorted(list_mots[1]):
+        val = True
+    print(val)
+    return val
 
 
 def contains_doubles(items: list) -> bool:
+    for i in items:
+        if items.count(i) > 1:
+            return True
+
+
     return False
 
 
 def best_grades(student_grades: dict) -> dict:
+    top_student = ''
+    top_student_grade = 0
+
+    for key, value in student_grades.items():
+        moyenne = sum(value) / len(value)
+        if moyenne > top_student_grade:
+            top_student = key
+            top_student_grade = moyenne
+
+
+
     # TODO: Retourner un dictionnaire contenant le nom de l'étudiant ayant la meilleure moyenne ainsi que sa moyenne
-    return {}
+    return {top_student: top_student_grade}
 
 
 def frequence(sentence: str) -> dict:
     # TODO: Afficher les lettres les plus fréquentes
     #       Retourner le tableau de lettres
+    words = sentence.split()
+    frequency = {}
+    for word in words:
+        for letter in word:
+            if letter in frequency:
+                frequency[letter] += 1
+            else:
+                frequency[letter] = 1
 
-    return {}
+    sorted_frequency = dict(sorted(frequency.items(), key=lambda item: item[1], reverse=True))
+    for i in sorted_frequency:
+        if sorted_frequency[i] > 5:
+            print(f"Le caractère {i} revient {sorted_frequency[i]} fois.")
+
+
+    return sorted_frequency
 
 
 def get_recipes():
     # TODO: Demander le nom d'une recette, puis ses ingredients et enregistrer dans une structure de données
-    pass
+    name = input("Quel est le nom de votre recette?\n")
+    ingredient = input("Entrer la liste d'ingrédients? Séparer les ingrédiants par une ,\n").split(",")
+
+    return {name: ingredient}
+
+
 
 
 def print_recipe(ingredients) -> None:
     # TODO: Demander le nom d'une recette, puis l'afficher si elle existe
-    pass
+    name = input("Quel est le nom de votre recette?\n")
+
+    if name in ingredients:
+        print(ingredients[name])
+    else:
+        print("Cette recette n'est pas dans le livre!")
+        print_recipe(ingredients)
+
+
 
 
 def main() -> None:

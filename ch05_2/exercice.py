@@ -11,16 +11,16 @@ def format_bill_total(data):
 
     TAX_RATE = 0.15
 
-    # Calculer le sous-total (somme des items)
+
     sum = 0
     for item in data:
         sum += item[INDEX_QUANTITY] * item[INDEX_PRICE]
 
-    # Calculer les taxes et total
+
     taxes = TAX_RATE * sum
     total = sum + taxes
 
-    # Retourner le bas de la facture formatée (sous-total, taxes, total)
+
     bill_data = [
         ("SOUS TOTAL", sum),
         ("TAXES     ", taxes),
@@ -30,10 +30,7 @@ def format_bill_total(data):
     for bd in bill_data:
         result += f"{bd[0]} {bd[1]:>10.2f} $" "\n"
 
-    # Approche avec répétition de code
-    # result += f"SOUS-TOTAL {sum : >10.2f} $" "\n"
-    # result += f"TAXES      {taxes : >10.2f} $ "\n"
-    # result += f"TOTAL      {total : >10.2f} $"
+
 
     return result
 
