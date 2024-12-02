@@ -5,7 +5,7 @@ import math
 
 def dissipated_power(voltage, resistance):
 	# TODO: Calculer la puissance dissipée par la résistance.
-	return math.pow(voltage, 2) / resistance
+	return (math.pow(voltage, 2) / resistance)
 
 def orthogonal(v1, v2):
 	# TODO: Retourner vrai si les vecteurs sont orthogonaux, faux sinon.
@@ -13,21 +13,17 @@ def orthogonal(v1, v2):
 	# v1[1] et v2[1] pour accéder au Y
 
 	# Produit scalaire
-	is_ortho = False
-	somme = 0
-
-
-	for i in range(2):
-		somme += v1[i] * v2[i]
-	is_ortho = somme == 0
-
-	return is_ortho
+	dot_product = v1[0] * v2[0] + v1[1] * v2[1]
+	return dot_product == 0
 
 def point_in_circle(point, circle_center, circle_radius):
 	# TODO: Retourner vrai si le point est à l'intérieur du cercle, faux sinon.
 	# point[0] et circle_center[0] pour accéder au X
 	# point[1] et circle_center[1] pour accéder au Y
-	is_cercle = False
+	distance_x = circle_center[0] - point[0]
+	distance_y = circle_center[1] - point[1]
+	distance = math.sqrt(distance_x ** 2 + distance_y ** 2)
+	return distance <= circle_radius
 
 def cash(value):
 	# TODO: Calculez le nombre de billets de 20$, 10$ et 5$ et pièces de 1$, 25¢, 10¢ et 5¢ à remettre pour représenter la valeur. Il faut arrondir à la pièce de 5¢ près. Il faut remplir les variables twenties, tens, fives, ones, quarters, dimes et nickels avec le quantité de chaque dénomination.

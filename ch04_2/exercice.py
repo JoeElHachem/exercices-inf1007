@@ -4,15 +4,15 @@
 import random
 from datetime import datetime
 
-from scipy.special import result
+
 
 
 def get_first_part_of_name(name):
-	return name.split('-')[0].capitalize()
+	return "Bonjour, " + name.split('-')[0].capitalize()
 
 
 def get_random_sentence(animals, adjectives, fruits):
-	return f"Aujourd’hui, j’ai vu un {animals[random.choice]} s’emparer d’un panier {adjectives[random.choice]} plein de {fruits[random.choice]}."
+	return f"Aujourd’hui, j’ai vu un {random.choice(animals)} s’emparer d’un panier {random.choice(adjectives)} plein de {random.choice(fruits)}."
 
 def format_date(year, month, day, hours, minutes, seconds):
 	formatted_date = f"{year:04}-{month:02}-{day:02}"
