@@ -1,8 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-from pydoc_data.topics import topics
 
-from anyio.abc import value
 
 
 def order(values: list = None) -> list:
