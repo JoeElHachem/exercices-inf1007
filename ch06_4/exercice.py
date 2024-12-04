@@ -6,20 +6,24 @@ import copy
 import itertools
 
 
+
 def get_even_keys(dictionary):
-	return {}
+	return {key for key in dictionary.keys() if key % 2 == 0 }
 
 def join_dictionaries(dictionaries):
-	return {}
+	resultat = {}
+	for d in dictionaries:
+		resultat.update(d)
+	return resultat
 
 def dictionary_from_lists(keys, values):
-	return {}
+	return {keys[i]: values[i] for i in range(min(len(keys), len(values)))}
 
 def get_greatest_values(dictionnary, num_values):
-	return []
+	return sorted(dictionnary.values(), reverse=True)[:num_values]
 
 def get_sum_values_from_key(dictionnaries, key):
-	return 0
+	return sum(d.get(key, 0) for d in dictionnaries)
 
 
 if __name__ == "__main__":
