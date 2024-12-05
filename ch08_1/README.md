@@ -1,5 +1,6 @@
 # Exercices en vrac (chapitre 8)
 
+
 ## Objectifs
 
 Compléter les quelques exercices suivants en modifiant le code de [exercice.py](exercice.py):
